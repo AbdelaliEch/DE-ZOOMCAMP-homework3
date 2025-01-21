@@ -34,7 +34,10 @@ What is the estimated amount of data that will be read when this query is execut
 - 18.82 MB for the External Table and 47.60 MB for the Materialized Table
 - 0 MB for the External Table and 0MB for the Materialized Table
 - 2.14 MB for the External Table and 0MB for the Materialized Table  
-
+```sql
+SELECT COUNT(DISTINCT PULocationID) FROM `de_zoomcamp.green_tripdata_2022_external`;
+SELECT COUNT(DISTINCT PULocationID) FROM `de_zoomcamp.green_tripdata_2022`;
+```
 **Answer:** 0 MB for the External Table and 6.41MB for the Materialized Table
 
 ## Question 3:

@@ -6,6 +6,7 @@ What is count of records for the 2022 Green Taxi Data??
 - 840,402
 - 1,936,423
 - 253,647  
+
 **Answer:** 840,402
 
 ## Question 2:

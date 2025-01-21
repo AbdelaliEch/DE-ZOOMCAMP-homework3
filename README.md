@@ -1,8 +1,19 @@
 # DE-ZOOMCAMP-homework3
 
-SETUP:
+## SETUP:  
 Create an external table using the Green Taxi Trip Records Data for 2022.
+```sql
+CREATE OR REPLACE EXTERNAL TABLE `de_zoomcamp.green_tripdata_2022_external`
+OPTIONS (
+  format = 'PARQUET',
+  uris = ['gs://kestra-project-448315-bucket/green_tripdata_2022-*.parquet']
+);
+```
 Create a table in BQ using the Green Taxi Trip Records for 2022 (do not partition or cluster this table).
+```sql
+CREATE OR REPLACE TABLE `de_zoomcamp.green_tripdata_2022` AS
+SELECT * FROM `de_zoomcamp.green_tripdata_2022_external`;
+```
 
 ## Question 1:
 What is count of records for the 2022 Green Taxi Data??

@@ -46,7 +46,9 @@ How many records have a fare_amount of 0?
 - 128,219
 - 112
 - 1,622  
-
+```sql
+SELECT COUNT(1) FROM `de_zoomcamp.green_tripdata_2022` WHERE fare_amount=0; 
+```
 **Answer:** 1,622
 
 ## Question 4:
@@ -55,7 +57,13 @@ What is the best strategy to make an optimized table in Big Query if your query 
 - Partition by lpep_pickup_datetime  Cluster on PUlocationID
 - Partition by lpep_pickup_datetime and Partition by PUlocationID
 - Cluster on by lpep_pickup_datetime and Cluster on PUlocationID  
-
+```sql
+CREATE OR REPLACE TABLE `de_zoomcamp.green_tripdata_2022_partitioned_clustered`
+PARTITION BY DATE(lpep_pickup_datetime)
+CLUSTER BY PULocationID
+AS
+SELECT * FROM `de_zoomcamp.green_tripdata_2022`;
+```
 **Answer:** Partition by lpep_pickup_datetime Cluster on PUlocationID
 
 ## Question 5:
@@ -70,7 +78,13 @@ Choose the answer which most closely matches.</br>
 - 12.82 MB for non-partitioned table and 1.12 MB for the partitioned table
 - 5.63 MB for non-partitioned table and 0 MB for the partitioned table
 - 10.31 MB for non-partitioned table and 10.31 MB for the partitioned table  
+```sql
+SELECT DISTINCT(PULocationID) FROM `de_zoomcamp.green_tripdata_2022`
+WHERE lpep_pickup_datetime>='2022-06-01 00:00:00' AND lpep_pickup_datetime<='2022-06-30 00:00:00';
 
+SELECT DISTINCT(PULocationID) FROM `de_zoomcamp.green_tripdata_2022_partitioned_clustered`
+WHERE lpep_pickup_datetime>='2022-06-01 00:00:00' AND lpep_pickup_datetime<='2022-06-30 00:00:00';
+```
 **Answer:** 12.82 MB for non-partitioned table and 1.12 MB for the partitioned table
 
 ## Question 6: 
